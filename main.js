@@ -42,20 +42,18 @@ function squareClick() {
         }
     }
 
-    console.log(data)
-
     if(checkWin(data)) {
 
         document.getElementById('who').innerHTML = player
         document.querySelector('.win').classList.replace('win', 'win1')
     }
 
-    if(data.length >= 5) {
+    else if(data.length >= 5) {
         document.getElementById('winner').innerHTML = "Ничья!"
         document.querySelector('.who').classList.replace('who', 'who1')
         document.querySelector('.win').classList.replace('win', 'win1')
     }
-
+    console.log(data)
     player = player == 'X' ? '0' : 'X'
     document.getElementById('now').innerHTML = "Сейчас ходит: " + player
 }
