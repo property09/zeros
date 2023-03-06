@@ -21,7 +21,7 @@ body {
     width: 180px;
     height: 150px;
 
-    background-color: rgb(110, 27, 27);
+    background-color: rgb(110, 34, 34);
     visibility: hidden; 
 }
 
@@ -58,7 +58,7 @@ body {
     width: 180px;
     height: 150px;
 
-    background-color: rgb(110, 27, 27);
+    background-color: rgb(153, 58, 58);
     visibility: visible;
 }
 
@@ -106,17 +106,17 @@ body {
     height: 60px;
     line-height: 60px;
 
-    background-color: rgb(38, 107, 69);
+    background-color: rgb(82, 134, 109);
     color: aliceblue;
 
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     font-family: monospace;
     
-    border: 5px solid rgb(58, 117, 114);
+    border: 5px solid rgb(54, 97, 94);
     vertical-align: middle;
 }
 
 .square:hover {
-    background-color: rgb(48, 80, 51);
+    background-color: rgb(93, 131, 95);
 }
