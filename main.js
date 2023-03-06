@@ -4,20 +4,20 @@ var win = document.getElementsByClassName('win');
 
 var player = 'X';
 var winInd = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
     
+    [0,3,6],
     [1,4,7],
     [2,5,8],
-    [3,6,9],
 
-    [1,5,9],
-    [3,5,7]
+    [0,4,8],
+    [2,4,6]
 ]
 
 for (var i = 1; i <= 9; i++) {
-    area.innerHTML += "<div class='square' pos=" + i + "></div>"
+    area.innerHTML += "<div class='square' id=" + i + "></div>"
 }
 
 //без false - ошибка
@@ -27,8 +27,12 @@ for(var i = 0; i < 9; i++) {
 
 function squareClick() {
     var data = []
+    var data0 = []
+
+    var dataForComputer = []
 
     if(!this.innerHTML) {
+        
         this.innerHTML = player
     }
     else {
@@ -37,14 +41,35 @@ function squareClick() {
     }
 
     for(var i in square) {
+        /* console.log(i) */
+        if(square[i].innerHTML != 'X' && square[i].innerHTML != '0') {
+            dataForComputer.push(parseInt(i))
+        }
+    }
+    if(data.length != 5) {
+        computer(dataForComputer)
+    }
+
+    for(var i in square) {
+        /* console.log(i) */
         if(square[i].innerHTML == player) {
-            data.push(parseInt(square[i].getAttribute('pos')))
+            data.push(parseInt(i))
+        }
+
+        if(square[i].innerHTML == "0") {
+            data0.push(parseInt(i))
         }
     }
 
-    if(checkWin(data)) {
+    
+
+    if(checkWin(data) ) {
 
         document.getElementById('who').innerHTML = player
+        document.querySelector('.win').classList.replace('win', 'win1')
+    }
+    else if(checkWin(data0)) {
+        document.getElementById('who').innerHTML = "0"
         document.querySelector('.win').classList.replace('win', 'win1')
     }
 
@@ -53,9 +78,18 @@ function squareClick() {
         document.querySelector('.who').classList.replace('who', 'who1')
         document.querySelector('.win').classList.replace('win', 'win1')
     }
+
     console.log(data)
-    player = player == 'X' ? '0' : 'X'
+    console.log(data0)
+    /* console.log(dataForComputer) */
+    
+    /* player = player == 'X' ? '0' : 'X'  */
+    
     document.getElementById('now').innerHTML = "Сейчас ходит: " + player
+
+    
+    
+    
 }
 
 function checkWin(data) {
@@ -75,3 +109,21 @@ function checkWin(data) {
     }
     return false;
 }
+
+function computer(data) {
+    //console.log(data)
+
+    //УБИРАЕТ NAN
+    var x = data.filter(Boolean);
+    var n = x[getRnd(x.length)]
+
+    /* console.log(x)
+    console.log(n) */
+
+    document.getElementById(`${n + 1}`).innerHTML = "0";
+}
+
+function getRnd(x) {
+    return Math.floor(Math.random() * x)
+}
+
