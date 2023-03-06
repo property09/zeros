@@ -48,8 +48,9 @@ function squareClick() {
     }
 
     if(data.length != 5) {
-        computer(dataForComputer)
+        data0.push(computer(dataForComputer))
     }
+
 
     for(var i in square) {
         /* console.log(i) */
@@ -57,11 +58,17 @@ function squareClick() {
             data.push(parseInt(i))
         }
 
+        /* if(square[i].innerHTML == "0") {
+            data0.push(parseInt(i))
+        } */
+    }
+    
+    for(var i in square) {
+        /* console.log(i) */
         if(square[i].innerHTML == "0") {
             data0.push(parseInt(i))
         }
     }
-
     
 
     if(checkWin(data) ) {
@@ -85,12 +92,8 @@ function squareClick() {
     /* console.log(dataForComputer) */
     
     /* player = player == 'X' ? '0' : 'X'  */
-    
     document.getElementById('now').innerHTML = "Сейчас ходит: " + player
-
-    
-    
-    
+   
 }
 
 function checkWin(data) {
@@ -105,7 +108,6 @@ function checkWin(data) {
                 win = false
             }
         }
-
         if (win) return true;
     }
     return false;
@@ -127,11 +129,11 @@ function computer(data) {
         setTimeout(function() {
             console.log('2 sec');
             document.getElementById(`${n + 1}`).innerHTML = "0";
-        }, 500);
+        }, 300);
 
-        
     }
     
+    return n;
 }
 
 function getRnd(x) {
