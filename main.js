@@ -46,6 +46,7 @@ function squareClick() {
             dataForComputer.push(parseInt(i))
         }
     }
+
     if(data.length != 5) {
         computer(dataForComputer)
     }
@@ -119,8 +120,18 @@ function computer(data) {
 
     /* console.log(x)
     console.log(n) */
+    console.log(data)
+    
+    if (data.length != 3) {
+        
+        setTimeout(function() {
+            console.log('2 sec');
+            document.getElementById(`${n + 1}`).innerHTML = "0";
+        }, 500);
 
-    document.getElementById(`${n + 1}`).innerHTML = "0";
+        
+    }
+    
 }
 
 function getRnd(x) {
